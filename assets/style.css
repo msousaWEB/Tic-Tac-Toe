@@ -70,9 +70,9 @@ h1 {
 
 /* Hider */
 
-/* .hide {
+.hide {
     display: none !important;
-} */
+}
 
 
 /* Score Board */
@@ -118,5 +118,4 @@ h1 {
     background-color: black;
     color: white;
     padding: 20px;
-    display: none;
 }
