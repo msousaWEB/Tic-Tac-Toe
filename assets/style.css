@@ -9,10 +9,11 @@ h1 {
 
 /* Buttons */
 
-.btn-container button {
+#btn-container button {
     border: none;
     padding: 10px 15px;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 /* Game */
@@ -33,6 +34,8 @@ h1 {
     border: 5px solid black;
     box-sizing: border-box;
     flex: 1 1 33%;
+    background-color: lightgray;
+    cursor: pointer;
 }
 
 #block-1, #block-2, #block-3 {

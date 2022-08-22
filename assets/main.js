@@ -24,6 +24,12 @@ for(let i = 0; i < boxes.length; i++) {
             // computing play
             if(player1 == player2) {
                 player1++;
+
+                if(secondPlayer == 'vs-ai') {
+                    //execute ai plays
+                    aiPlay();
+                    player2++;
+                }
             } else {
                 player2++;
             }
@@ -34,6 +40,22 @@ for(let i = 0; i < boxes.length; i++) {
 
     });
 
+}
+
+// check 2 players or versus AI
+for(let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function(){
+        secondPlayer = this.getAttribute("id");
+
+        for(let j = 0; j < btn.length; j++) {
+            btn[j].style.display = 'none';
+        }
+
+        setTimeout( function() {
+            let container = document.querySelector("#container");
+            container.classList.remove("hide");
+        }, 500);
+    })
 }
 
 function checkPlayer(player1, player2) {
@@ -232,5 +254,35 @@ function showWinner(winner){
 
     for(let i = 0; i < boxesToRemove.length; i++) {
         boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
+    }
+}
+
+function aiPlay() {
+    let cloneO = o.cloneNode(true);
+    counter = 0;
+    filled = 0;
+
+    for(let i = 0; i < boxes.length; i++) {
+        let randomNumber = Math.floor(Math.random() * 5);
+
+        // only fill if the child is empty
+        if(boxes[i].childNodes[0] == undefined) {
+            if(randomNumber <= 1) {
+                setTimeout( function() {
+                    boxes[i].appendChild(cloneO);
+                }, 500);
+                
+                counter++;
+                break;
+            }
+
+        // check how many are filled
+        } else {
+            filled++;
+        }
+    }
+
+    if (counter == 0 && filled < 9) {
+        aiPlay();
     }
 }
